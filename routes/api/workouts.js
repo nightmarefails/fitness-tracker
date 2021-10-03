@@ -2,7 +2,7 @@ const router = require('express').Router();
 const mongoose = require('mongoose')
 
 const Workout = require('../../models/Workout');
-
+//If MONGODB_URI use that connection if not connect to local mongoDB workout
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 router.get('/', (req, res) => {
