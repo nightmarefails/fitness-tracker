@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const mongoose = require('mongoose')
 
-const db = require('../../models/index');
+const Workout = require('../../models/Workout');
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 router.get('/', (req, res) => {
-    db.Workout.find({})
+    Workout.find({})
         .then(workout => {
             res.json(workout)
         })
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    db.Workout.create({day: new Date()})
+    Workout.create({day: new Date()})
     .then(workout => {
         res.json(workout)
     })
@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     const exercises = req.body
-    db.Workout.update({_id: new mongoose.Types.ObjectId(req.params.id) }, { $push: {exercises: exercises} })
+    Workout.update({_id: new mongoose.Types.ObjectId(req.params.id) }, { $push: {exercises: exercises} })
     .then(excercise => {
         res.json(excercise);
     })
@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
 })
 
 router.get('/range', (req, res) => {
-    let workoutsInRange = db.Workout.aggregate([{
+    let workoutsInRange = Workout.aggregate([{
         $addFields: {
             totalDuration: {
                 $sum: "$excercises.duration"
