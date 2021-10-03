@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const mongoose = require('mongoose')
 
-const Workout = require('../../models/Workout');
+const Workout = require('../../models/Workout.js');
 
 router.get('/', (req, res) => {
     Workout.find({})
