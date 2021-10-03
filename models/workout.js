@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const Excercise = require('./Excercise');
 
-const workout = new Schema({
+const WorkoutSchema = new Schema({
     day: {
         type: Date,
         required: "A date is required",
         unique: true
     },
-    excersises: [excersise]
+    excercises: [{type: Schema.Types.ObjectId, ref: Excercise}]
 
 })
 
-module.exports = workout
+const Workout = mongoose.model("Workout", WorkoutSchema)
+
+
+module.exports = Workout
