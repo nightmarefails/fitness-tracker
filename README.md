@@ -11,8 +11,8 @@ Users can either create a new workout or update the current workout. After choos
 
 ## Website Info:
 ----------
-![Main Page](images\mainpage.jpeg)
-![Dashboard](images\dashboard.jpeg)
+![Main Page](.\images\mainpage.jpeg)
+![Dashboard](.\images\dashboard.jpeg)
 
 https://guarded-woodland-06880.herokuapp.com/
 
